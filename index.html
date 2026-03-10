@@ -3,137 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Mi Musa en su Día</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Para una Mujer Única</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
     
     <style>
         :root {
-            /* Paleta Romántica */
-            --oro-rosa: #e6c7c2;
-            --rosa-fuerte: #ff8fa3;
-            --rojo-pasion: #d00056;
-            --blanco-cristal: rgba(255, 255, 255, 0.9);
-            --texto-oscuro: #4a4a4a;
+            --rojo-pasion: #ff4d6d;
+            --rosa-suave: #ffccd5;
+            --blanco: #ffffff;
+            --texto: #4a4a4a;
         }
 
         body {
             margin: 0;
-            background: radial-gradient(circle, #fff0f3 0%, #ffe0e9 100%);
-            color: var(--texto-oscuro);
+            padding: 0;
+            background: #fff0f3;
             font-family: 'Poppins', sans-serif;
+            color: var(--texto);
             overflow-x: hidden;
         }
 
-        /* Contenedor de Partículas (ahora pétalos/corazones) */
         #particles-js {
             position: fixed;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 1; /* Fondo interactivo */
+            pointer-events: none;
         }
 
-        /* Diseño de Cristalismo Romántico */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(255, 143, 163, 0.2);
-            padding: 3rem;
-            text-align: center;
-            max-width: 650px;
-            margin: 8% auto; /* Centrado vertical y horizontal */
-            animation: fadeIn 1.8s ease-out;
+        .content-wrapper {
             position: relative;
+            z-index: 2; /* Contenido por encima de las partículas */
         }
 
-        /* Título Elegante */
+        /* Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(255,240,243,0.7), rgba(255,240,243,0.7)), 
+                        url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=2070&auto=format&fit=crop') center/cover;
+        }
+
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: 4rem;
             color: var(--rojo-pasion);
-            margin-bottom: 0.5rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            margin: 0;
         }
 
-        .status-badge {
-            display: inline-block;
-            padding: 8px 20px;
-            background: rgba(216, 0, 86, 0.1);
-            border: 1px solid var(--rojo-pasion);
-            border-radius: 50px;
-            font-size: 0.9rem;
+        /* Secciones de Virtudes */
+        .section-virtud {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .section-virtud:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .texto-virtud {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .texto-virtud h2 {
+            font-family: 'Playfair Display', serif;
             color: var(--rojo-pasion);
-            margin-bottom: 25px;
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-size: 2.5rem;
         }
 
-        p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--texto-oscuro);
-            font-weight: 300;
-            margin-bottom: 1.5rem;
+        .foto-virtud {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(255, 77, 109, 0.2);
+            border: 8px solid white;
+            transition: transform 0.3s ease;
         }
 
-        .highlight {
-            color: var(--rojo-pasion);
-            font-weight: 600;
-            font-style: italic;
+        .foto-virtud:hover {
+            transform: scale(1.03) rotate(2deg);
         }
 
-        /* Botón Interactiva Romántico */
-        .btn-action {
-            margin-top: 30px;
+        footer {
+            text-align: center;
+            padding: 100px 20px;
+            background: var(--blanco);
+        }
+
+        .btn-final {
             padding: 15px 40px;
             background: var(--rojo-pasion);
-            border: none;
             color: white;
+            border: none;
             border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(208, 0, 86, 0.3);
-            position: relative;
-            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.4);
         }
 
-        .btn-action:hover {
-            background: #b0004a;
-            box-shadow: 0 8px 25px rgba(208, 0, 86, 0.5);
-            transform: translateY(-3px);
-        }
-
-        /* Animaciones */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(40px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        /* Toque de Consola pero Romántico */
-        .console-text {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1rem;
-            color: #7a7a7a; /* Gris suave, no verde brillante */
-            margin-top: 25px;
-            text-align: left;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 10px;
-            border-left: 3px solid var(--oro-rosa);
-        }
-
-        /* Corazón decorativo */
-        .heart-icon {
-            color: var(--rojo-pasion);
-            font-size: 1.5rem;
-            margin-top: 20px;
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .section-virtud { text-align: center; }
         }
     </style>
 </head>
@@ -141,54 +127,78 @@
 
     <div id="particles-js"></div>
 
-    <div class="glass-card">
-        <div class="status-badge">Estatus: Admirándote</div>
-        <h1>Para [Nombre de ella]</h1>
-        <p>
-            En este <span class="highlight">8 de marzo</span>, no solo celebro el Día de la Mujer, celebro la suerte de que existas. 
-            Eres la <span class="highlight">inspiración perfecta</span>: una mezcla increíble de inteligencia, fuerza y una ternura que me cautiva.
-        </p>
-        
-        <p>Tú haces que el mundo sea un algoritmo mucho más bello.</p>
-        
-        <div class="console-text" id="typewriter">
+    <div class="content-wrapper">
+        <header>
+            <div class="reveal">
+                <p style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem;">8 de Marzo</p>
+                <h1>Para la mujer que ilumina mi mundo</h1>
+                <p>Un pequeño tributo a todo lo que eres.</p>
             </div>
+        </header>
 
-        <button class="btn-action" onclick="mostrarSorpresa()">REVELAR SENTIMIENTO ESPECIAL</button>
-        
-        <div class="heart-icon">❤</div>
+        <section class="section-virtud">
+            <div class="texto-virtud reveal">
+                <h2>Tu Inteligencia</h2>
+                <p>Admiro profundamente la forma en que ves el mundo. Tu mente es brillante, capaz de resolver cualquier problema y de enseñarme algo nuevo cada día. Eres mi ejemplo a seguir.</p>
+            </div>
+            <div class="foto-virtud reveal" style="background-image: url('https://via.placeholder.com/400x500?text=Su+Foto+1');"></div>
+        </section>
+
+        <section class="section-virtud">
+            <div class="texto-virtud reveal">
+                <h2>Tu Fortaleza</h2>
+                <p>La resiliencia que demuestras ante los retos es inspiradora. No hay meta que no puedas alcanzar, y ver cómo luchas por tus sueños me hace sentir un orgullo inmenso.</p>
+            </div>
+            <div class="foto-virtud reveal" style="background-image: url('https://via.placeholder.com/400x500?text=Su+Foto+2');"></div>
+        </section>
+
+        <section class="section-virtud">
+            <div class="texto-virtud reveal">
+                <h2>Tu Esencia Única</h2>
+                <p>Simplemente por ser tú, haces que todo a mi alrededor sea mejor. Tienes una luz propia que no se apaga y que me hace sonreír incluso en los días más grises.</p>
+            </div>
+            <div class="foto-virtud reveal" style="background-image: url('https://via.placeholder.com/400x500?text=Su+Foto+3');"></div>
+        </section>
+
+        <footer>
+            <div class="reveal">
+                <h2>Gracias por ser tú</h2>
+                <button class="btn-final" onclick="alert('Eres lo mejor que me ha pasado. ¡Feliz día!')">Presiona aquí</button>
+                <p style="margin-top: 20px; opacity: 0.6;">Hecho con ❤️ por Ing. [Tu Nombre]</p>
+            </div>
+        </footer>
     </div>
 
     <script>
-        // Configuración de partículas (pétalos rosados flotando)
+        // CONFIGURACIÓN DE CORAZONES REALES
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#ffb3c1" }, /* Rosa pálido */
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.6, "random": true },
-                "size": { "value": 5, "random": true },
-                "line_linked": { "enable": false }, /* Sin líneas conectadas */
-                "move": { "enable": true, "speed": 1.5, "direction": "bottom", "random": true, "straight": false, "out_mode": "out" }
+                "number": { "value": 40 },
+                "color": { "value": ["#ff4d6d", "#ff8fa3", "#ffb3c1"] },
+                "shape": {
+                    "type": "heart", // Esto requiere que la librería lo reconozca o lo dibujamos
+                },
+                "opacity": { "value": 0.5, "random": true },
+                "size": { "value": 10, "random": true },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "top", /* Los corazones suben como burbujas */
+                    "random": true,
+                    "out_mode": "out"
+                }
             }
         });
 
-        // Efecto Typewriter (Toque de consola romántico)
-        const txt = "> Analizando tu impacto...\n> Sonrisa: Deslumbrante\n> Inteligencia: Admirable\n> Resultado: Me encantas cada día más.";
-        let i = 0;
-        function typeWriter() {
-            if (i < txt.length) {
-                document.getElementById("typewriter").innerHTML += txt.charAt(i);
-                i++;
-                setTimeout(typeWriter, 60); // Ligeramente más lento para que sea más dramático
-            }
-        }
-        window.onload = typeWriter;
-
-        // El mensaje de la sorpresa
-        function mostrarSorpresa() {
-            alert("Acceso concedido a la verdad. \n\n[Nombre de ella], eres la persona más increíble que conozco. Feliz día y gracias por ser tú.");
-        }
+        // ANIMACIÓN DE APARICIÓN (Scroll Reveal)
+        ScrollReveal().reveal('.reveal', {
+            delay: 300,
+            distance: '50px',
+            duration: 1000,
+            easing: 'ease-in-out',
+            origin: 'bottom',
+            interval: 200
+        });
     </script>
 </body>
 </html>
